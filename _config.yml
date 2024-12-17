@@ -4,3 +4,7 @@ description: Test Automation and Development Portfolio
 plugins:
   - jekyll-paginate
 paginate: 5
+collections:
+  pages:
+    output: true
+    permalink: /:path/
