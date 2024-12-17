@@ -14,7 +14,7 @@ Test automation projects in active development:
 
 Python Pytest (WIP)
   
-- Another Python project utilizing Pytest, with Requests for API testing and Selenium for UI testing
+- Python project utilizing Pytest, with Requests for API testing and Selenium for UI testing
 
 JavaScript Cucumber (WIP)
 
