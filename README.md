@@ -13,3 +13,7 @@ As my career has progressed, my focus has shifted from manual testing to develop
 This section contains a collection of frameworks and projects developed using various languages, tools, and methodologies. Recently, I’ve been revisiting BDD (Behavior-Driven Development) with Python/Behave/Selenium and JavaScript/Cucumber/Cypress, while also focusing on developing equivalent functional and integration tests.
 
 Looking ahead, I’m excited to explore new tools and frameworks, including TypeScript/Playwright, Appium, performance testing, unit testing, ETL testing, and more. . .
+
+## [Application Development](application-development/)
+
+This section will have a couple of my development projects that are not test automation. These are generally either personal interest, solve a personal problem, or is a project to become more familiar with a programming language.
