@@ -1,0 +1,43 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.navbar {
+  background-color: #000000;
+  overflow: hidden;
+  position: fixed;  /* Fix navbar to top */
+  top: 0;          /* Align to top */
+  width: 100%;     /* Full width */
+  z-index: 1000;   /* Ensure navbar stays on top */
+}
+
+/* Add padding to body to prevent content from hiding under navbar */
+body {
+  padding-top: 50px;  /* Adjust value based on navbar height */
+}
+
+.navbar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar-item {
+  display: inline;
+}
+
+.navbar-item a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.navbar-item a:hover {
+  background-color: #ddd;
+  color: black;
+}
