@@ -4,7 +4,7 @@
       <meta charset='utf-8'>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width,maximum-scale=2">
-      <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=933695bea7045bc24dffc2816f402823251cb228">
+      <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9eeb085dff9683257505ed95c484b94ee58633b4">
    </head>
    <body>
       <nav class="navbar">
@@ -13,44 +13,74 @@
       <li class="navbar-item"><a href="/about/">About</a></li>
       <li class="navbar-item"><a href="/resume/">Resume</a></li>
       <li class="navbar-item"><a href="/test-automation/">Test Automation</a></li>
-      <li class="navbar-item"><a href="/other-stuff/">Other Stuff</a></li>
+      <li class="navbar-item"><a href="/projects/">Projects</a></li>
     </ul>
   </nav>
 
       <!-- HEADER -->
       <div id="header_wrap" class="outer">
          <header class="inner">
-            <h1 id="project_title">Alex Hawley, QA Engineer</h1>
-            <h2 id="project_tagline">Test Automation Portfolio</h2>
+            <h1 id="project_title">Alex Hawley</h1>
+            <h2 id="project_tagline">Quality Assurance Engineer</h2>
          </header>
       </div>
       <!-- MAIN CONTENT -->
       <div id="main_content_wrap" class="outer">
          <section id="main_content" class="inner">
-            <h1 id="python-bdd-test-automation-with-the-behave-framework-requests-and-selenium">Python BDD: Test Automation with the Behave Framework, Requests, and Selenium</h1>
+            <h1 id="python-bdd-test-automation-with-behave-framework-requests-and-selenium">Python BDD: Test Automation with Behave Framework, Requests, and Selenium</h1>
 <p><a href="https://github.com/alxHawley/python-behave">GitHub Repository</a></p>
 
-<p>Rather than duplicate the README for the repository I’ll tell you why I started this particular project.</p>
+<p>This project demonstrates comprehensive Python-based behavior-driven development (BDD) test automation using the Behave framework, combining API testing with Requests and UI testing with Selenium. As my foundational automation framework, this project reflects professional testing practices and serves as the basis for my <a href="https://github.com/alxHawley/js-cypress-cucumber">JavaScript BDD implementation</a>.</p>
 
-<p>For starters, I like working with Python. It is the first programming language I learned and I still gravitate to it for test automation solutions and elsewhere. Python is versitile, fast, and easy to read. Additionally, my first professional test automation contribututions were made in a similar framework. That said, I’d like to give a big shoutout to Aziz Ettobi (<a href="https://www.linkedin.com/in/azizettobi/">Linkedin</a> &amp; <a href="https://github.com/aettobi">GitHub</a>) for introducing me to BDD, and for providing crucial guidance early in my automation career. Aziz was responsible for architecting the framework I contributed to, but he also mentored me into becoming a better tester and programmer.</p>
+<h2 id="project-overview">Project Overview</h2>
 
-<p>The README for the repo goes into some detail on BDD, and links to resources, but here’s high-level overview of how the components of the structure work together.</p>
+<p>This Python BDD framework provides a robust foundation for both API and UI test automation, implementing industry-standard testing patterns with comprehensive CRUD operations, data validation, and cross-browser compatibility. The framework demonstrates scalable architecture suitable for enterprise-level testing initiatives.</p>
 
-<p>We’ll start with a ‘Feature’ ie; <a href="https://github.com/alxHawley/python-behave/blob/main/features/api.feature">features/api.feature</a>, the human-language component of a BDD framework. Here the feature is defined, preconditions can be set (background), and the tests (scenarios) defined. I consider the featue analogous to the ‘frontend’ while the steps, the ‘backend’, does the work.</p>
+<p><em>Special acknowledgment to <a href="https://www.linkedin.com/in/azizettobi/">Aziz Ettobi</a> (<a href="https://github.com/aettobi">GitHub</a>) for introducing me to BDD principles and providing mentorship that shaped my automation engineering approach.</em></p>
+
+<h2 id="technical-stack">Technical Stack</h2>
+
+<h3 id="core-technologies">Core Technologies</h3>
+<ul>
+  <li><strong>Behave</strong>: Python BDD framework supporting Gherkin syntax for readable test scenarios</li>
+  <li><strong>Requests</strong>: HTTP library for comprehensive API testing and validation</li>
+  <li><strong>Selenium WebDriver</strong>: Cross-browser automation for UI testing</li>
+  <li><strong>Python 3.x</strong>: Modern Python features with context management and f-string formatting</li>
+</ul>
+
+<h3 id="key-features">Key Features</h3>
+<ul>
+  <li><strong>Full CRUD API Testing</strong>: Complete Create, Read, Update, Delete operation validation</li>
+  <li><strong>Multi-browser Support</strong>: Cross-browser compatibility testing with Chrome, Firefox, Edge</li>
+  <li><strong>Data-driven Testing</strong>: Parameterized scenarios with external data sources</li>
+  <li><strong>Robust Assertions</strong>: Comprehensive response validation and error handling</li>
+</ul>
+
+<h2 id="bdd-framework-architecture">BDD Framework Architecture</h2>
+
+<p>The framework separates business logic (feature files) from technical implementation (step definitions), enabling collaboration between technical and non-technical stakeholders through human-readable Gherkin syntax.</p>
+
+<h3 id="feature-definition">Feature Definition</h3>
+<p>Example from <code class="language-plaintext highlighter-rouge">features/api.feature</code> demonstrating CRUD operations:</p>
 
 <div class="language-gherkin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">Feature</span><span class="p">:</span> API CRUD operations  
-As an API client I can create, read, update, and delete hotel bookings
+  As an API client
+  I can create, read, update, and delete hotel bookings
+  So that I can manage booking data effectively
 
-<span class="kn">Scenario</span><span class="p">:</span> GET request with booking ID
-<span class="nf">When </span>a GET request is made with the booking ID
-<span class="nf">Then </span>the API response returns the correct record details
+  <span class="kn">Background</span><span class="p">:</span>
+    <span class="nf">Given </span>the API is available and responsive
+
+  <span class="kn">Scenario</span><span class="p">:</span> Create and retrieve booking record
+    <span class="nf">When </span>I create a new booking with valid data
+    <span class="nf">Then </span>the booking is created successfully
+    <span class="nf">And </span>the booking ID is returned
+    <span class="nf">When </span>a GET request is made with the booking ID
+    <span class="nf">Then </span>the API response returns the correct record details
 </code></pre></div></div>
 
-<p>The other main component of a BDD framework (Behave, Cucumber, etc.) is the ‘_steps.py file’, where the actual programming language chosen comes into play. Each statement of the .feature file is paired to a step that executes the test code.</p>
-
-<p><a href="https://github.com/alxHawley/python-behave/blob/main/features/steps/api_steps.py">features/steps/api_Steps.py</a> includes the ‘When’ and ‘Then’ steps that correlate to the Gherkin syntax in the feature.</p>
-
-<p>‘When’ step - the action or event that occurs:</p>
+<h3 id="step-implementation">Step Implementation</h3>
+<p>Corresponding Python step definitions from <code class="language-plaintext highlighter-rouge">features/steps/api_steps.py</code>:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">when</span><span class="p">(</span><span class="s">"a GET request is made with the booking ID"</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_get_booking</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
@@ -58,31 +88,109 @@ As an API client I can create, read, update, and delete hotel bookings
     <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}{</span><span class="n">BOOKING_ENDPOINT</span><span class="si">}</span><span class="s">/</span><span class="si">{</span><span class="n">context</span><span class="p">.</span><span class="n">bookingid</span><span class="si">}</span><span class="s">"</span>
     <span class="n">context</span><span class="p">.</span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
     <span class="n">context</span><span class="p">.</span><span class="n">booking</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="o">@</span><span class="n">then</span><span class="p">(</span><span class="s">"the API response returns the correct record details"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_verify_booking_details</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="s">"""Verify that the booking details match expected data"""</span>
+    <span class="k">assert</span> <span class="n">context</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    
+    <span class="n">response_json</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c1"># Comprehensive data validation
+</span>    <span class="k">assert</span> <span class="n">response_json</span><span class="p">[</span><span class="s">"firstname"</span><span class="p">]</span> <span class="o">==</span> <span class="n">context</span><span class="p">.</span><span class="n">booking</span><span class="p">[</span><span class="s">"firstname"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">response_json</span><span class="p">[</span><span class="s">"lastname"</span><span class="p">]</span> <span class="o">==</span> <span class="n">context</span><span class="p">.</span><span class="n">booking</span><span class="p">[</span><span class="s">"lastname"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">response_json</span><span class="p">[</span><span class="s">"totalprice"</span><span class="p">]</span> <span class="o">==</span> <span class="n">context</span><span class="p">.</span><span class="n">booking</span><span class="p">[</span><span class="s">"totalprice"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">response_json</span><span class="p">[</span><span class="s">"depositpaid"</span><span class="p">]</span> <span class="o">==</span> <span class="n">context</span><span class="p">.</span><span class="n">booking</span><span class="p">[</span><span class="s">"depositpaid"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">response_json</span><span class="p">[</span><span class="s">"bookingdates"</span><span class="p">][</span><span class="s">"checkin"</span><span class="p">]</span>
+        <span class="o">==</span> <span class="n">context</span><span class="p">.</span><span class="n">booking</span><span class="p">[</span><span class="s">"bookingdates"</span><span class="p">][</span><span class="s">"checkin"</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">response_json</span><span class="p">[</span><span class="s">"bookingdates"</span><span class="p">][</span><span class="s">"checkout"</span><span class="p">]</span>
+        <span class="o">==</span> <span class="n">context</span><span class="p">.</span><span class="n">booking</span><span class="p">[</span><span class="s">"bookingdates"</span><span class="p">][</span><span class="s">"checkout"</span><span class="p">]</span>
+    <span class="p">)</span>
 </code></pre></div></div>
 
-<p>‘Then’ step - the expected outcome or result:</p>
+<h2 id="advanced-testing-capabilities">Advanced Testing Capabilities</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@then<span class="o">(</span><span class="s2">"the API response returns the correct record details"</span><span class="o">)</span>
-def step_booking_details_updated<span class="o">(</span>context<span class="o">)</span>:
-    <span class="s2">"""Verify that the booking details are updated successfully"""</span>
-    assert context.response.status_code <span class="o">==</span> 200
+<h3 id="api-testing-features">API Testing Features</h3>
+<ul>
+  <li><strong>RESTful Service Validation</strong>: Complete HTTP method coverage (GET, POST, PUT, DELETE)</li>
+  <li><strong>Response Schema Validation</strong>: JSON structure and data type verification</li>
+  <li><strong>Authentication Testing</strong>: Token-based and session-based authentication flows</li>
+  <li><strong>Error Handling</strong>: Comprehensive negative testing with invalid data scenarios</li>
+</ul>
 
-    <span class="c"># Log the entire JSON response for debugging</span>
-    response_json <span class="o">=</span> context.response.json<span class="o">()</span>
-    <span class="c"># assert that booking data returned matches data used to update the booking</span>
-    assert response_json[<span class="s2">"firstname"</span><span class="o">]</span> <span class="o">==</span> context.booking[<span class="s2">"firstname"</span><span class="o">]</span>
-    assert response_json[<span class="s2">"lastname"</span><span class="o">]</span> <span class="o">==</span> context.booking[<span class="s2">"lastname"</span><span class="o">]</span>
-    assert response_json[<span class="s2">"totalprice"</span><span class="o">]</span> <span class="o">==</span> context.booking[<span class="s2">"totalprice"</span><span class="o">]</span>
-    assert response_json[<span class="s2">"depositpaid"</span><span class="o">]</span> <span class="o">==</span> context.booking[<span class="s2">"depositpaid"</span><span class="o">]</span>
-    assert <span class="o">(</span>
-        response_json[<span class="s2">"bookingdates"</span><span class="o">][</span><span class="s2">"checkin"</span><span class="o">]</span>
-        <span class="o">==</span> context.booking[<span class="s2">"bookingdates"</span><span class="o">][</span><span class="s2">"checkin"</span><span class="o">]</span>
-    <span class="o">)</span>
-    assert <span class="o">(</span>
-        response_json[<span class="s2">"bookingdates"</span><span class="o">][</span><span class="s2">"checkout"</span><span class="o">]</span>
-        <span class="o">==</span> context.booking[<span class="s2">"bookingdates"</span><span class="o">][</span><span class="s2">"checkout"</span><span class="o">]</span>
-    <span class="o">)</span>
+<h3 id="ui-testing-integration">UI Testing Integration</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Selenium WebDriver integration for cross-browser testing
+</span><span class="o">@</span><span class="n">given</span><span class="p">(</span><span class="s">"I am on the booking management page"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_navigate_to_booking_page</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s">/booking"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="s">"Booking Management"</span> <span class="ow">in</span> <span class="n">context</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="n">title</span>
+
+<span class="o">@</span><span class="n">when</span><span class="p">(</span><span class="s">"I fill out the booking form with valid data"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_fill_booking_form</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span> <span class="s">"firstname"</span><span class="p">).</span><span class="n">send_keys</span><span class="p">(</span><span class="s">"John"</span><span class="p">)</span>
+    <span class="n">context</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span> <span class="s">"lastname"</span><span class="p">).</span><span class="n">send_keys</span><span class="p">(</span><span class="s">"Doe"</span><span class="p">)</span>
+    <span class="n">context</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span> <span class="s">"totalprice"</span><span class="p">).</span><span class="n">send_keys</span><span class="p">(</span><span class="s">"150"</span><span class="p">)</span>
 </code></pre></div></div>
+
+<h2 id="project-structure">Project Structure</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python-behave/
+├── features/
+│   ├── api.feature              # API testing scenarios
+│   ├── ui.feature               # UI testing scenarios
+│   ├── steps/
+│   │   ├── api_steps.py         # API step implementations
+│   │   ├── ui_steps.py          # UI step implementations
+│   │   └── common_steps.py      # Shared step definitions
+│   └── environment.py           # Test environment configuration
+├── utils/
+│   ├── api_helpers.py           # API utility functions
+│   ├── data_generators.py       # Test data generation
+│   └── browser_factory.py       # WebDriver management
+├── config/
+│   └── settings.py              # Environment configurations
+└── requirements.txt             # Python dependencies
+</code></pre></div></div>
+
+<h2 id="development-methodology">Development Methodology</h2>
+
+<p>This project demonstrates expertise in:</p>
+<ul>
+  <li><strong>Enterprise testing patterns</strong> - Scalable framework architecture with separation of concerns</li>
+  <li><strong>API testing proficiency</strong> - Complete RESTful service validation and data integrity testing</li>
+  <li><strong>Cross-browser automation</strong> - Multi-browser compatibility testing with Selenium WebDriver</li>
+  <li><strong>BDD collaboration</strong> - Business-readable test scenarios facilitating stakeholder communication</li>
+  <li><strong>Python best practices</strong> - Context managers, exception handling, and modern Python idioms</li>
+</ul>
+
+<h2 id="testing-coverage">Testing Coverage</h2>
+
+<h3 id="api-test-scenarios">API Test Scenarios</h3>
+<ul>
+  <li><strong>CRUD Operations</strong>: Complete lifecycle testing of booking resources</li>
+  <li><strong>Data Validation</strong>: Schema validation and boundary testing</li>
+  <li><strong>Authentication</strong>: Secure access control and session management</li>
+  <li><strong>Error Handling</strong>: Comprehensive negative testing scenarios</li>
+</ul>
+
+<h3 id="ui-test-scenarios">UI Test Scenarios</h3>
+<ul>
+  <li><strong>Form Validation</strong>: Input field validation and user interaction flows</li>
+  <li><strong>Navigation Testing</strong>: Page routing and user journey validation</li>
+  <li><strong>Responsive Design</strong>: Cross-device compatibility testing</li>
+</ul>
+
+<h2 id="future-enhancements">Future Enhancements</h2>
+
+<p><strong>Performance Testing Integration</strong>: Expanding the framework to include load testing capabilities using pytest-benchmark for API performance validation.</p>
+
+<p><strong>CI/CD Pipeline Integration</strong>: Implementation of continuous testing with GitHub Actions, including parallel test execution and comprehensive reporting.</p>
+
+<hr />
+
+<p><em>This project establishes the foundation for my test automation expertise, demonstrating proficiency in Python-based testing frameworks and serving as the architectural blueprint for cross-language automation implementations.</em></p>
 
          </section>
       </div>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <meta charset='utf-8'>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width,maximum-scale=2">
+      <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9eeb085dff9683257505ed95c484b94ee58633b4">
+   </head>
+   <body>
+      <nav class="navbar">
+    <ul class="navbar-list">
+      <li class="navbar-item"><a href="/">Home</a></li>
+      <li class="navbar-item"><a href="/about/">About</a></li>
+      <li class="navbar-item"><a href="/resume/">Resume</a></li>
+      <li class="navbar-item"><a href="/test-automation/">Test Automation</a></li>
+      <li class="navbar-item"><a href="/projects/">Projects</a></li>
+    </ul>
+  </nav>
+
+      <!-- HEADER -->
+      <div id="header_wrap" class="outer">
+         <header class="inner">
+            <h1 id="project_title">Alex Hawley</h1>
+            <h2 id="project_tagline">Quality Assurance Engineer</h2>
+         </header>
+      </div>
+      <!-- MAIN CONTENT -->
+      <div id="main_content_wrap" class="outer">
+         <section id="main_content" class="inner">
+            <h1 id="gps-tracking-application">GPS Tracking Application</h1>
+<h4 id="a-functional-dog-tracking-application-utilizing-gps-and-lte-lora-coming-soon--">A functional dog tracking application utilizing GPS and LTE (LoRa coming soon. . .)</h4>
+
+<h2 id="overview">Overview</h2>
+
+<p>A comprehensive GPS tracking system designed for real-time location monitoring and visualization. This project includes both a production application built for embedded Linux devices and a demo version with mock GPS API for development and demonstration purposes.</p>
+
+<div class="gps-app-container">
+  <iframe src="https://portable-dev.taila1da91.ts.net/" frameborder="0">
+    Your browser does not support iframes. <a href="https://portable-dev.taila1da91.ts.net/" target="_blank">Click here to view the GPS Application</a>
+  </iframe>
+</div>
+
+<p><em><a href="https://portable-dev.taila1da91.ts.net/" target="_blank">Open in new tab →</a></em></p>
+
+<h2 id="production-application">Production Application</h2>
+
+<p>The main application (<code class="language-plaintext highlighter-rouge">tracker.py</code>) is designed to run on embedded Linux devices, specifically targeting Raspberry Pi with cellular modem and external GPS hardware. Built for handheld touchscreen devices in field environments.</p>
+
+<h3 id="hardware-integration">Hardware Integration</h3>
+<ul>
+  <li><strong>GPS Hardware</strong>: GPS receiver integration via <code class="language-plaintext highlighter-rouge">gpsd</code> daemon</li>
+  <li><strong>Cellular Connectivity</strong>: LTE modem communication with AT command interface</li>
+  <li><strong>Signal Quality Monitoring</strong>: Real-time cellular signal strength indicators</li>
+  <li><strong>Embedded Display</strong>: PyQt5 GUI optimized for touchscreen Linux devices</li>
+</ul>
+
+<h3 id="core-features">Core Features</h3>
+<ul>
+  <li>Real-time GPS coordinate capture and validation</li>
+  <li>Cellular signal quality monitoring with visual indicators</li>
+  <li>Location data transmission to remote servers</li>
+  <li>GPS fix status indicators (2D/3D fix detection)</li>
+  <li>Graceful error handling and connection recovery</li>
+</ul>
+
+<h2 id="demo-application--mock-api">Demo Application &amp; Mock API</h2>
+
+<p>The demo version utilizes a custom-built mock GPS API server to simulate tracking functionality without requiring local or remote GPS hardware: the GPS API parses a .GPX file to generate mock location and tracking data, which is consumed by the tracking application. In the demo, the cellular signal quality and GPS fix data is hardcoded</p>
+
+<h3 id="mock-gps-server-architecture">Mock GPS Server Architecture</h3>
+<ul>
+  <li><strong>Flask/SocketIO Backend</strong>: Real-time bidirectional communication</li>
+  <li><strong>GPX Route Simulation</strong>: Provides realistic location data sequences</li>
+  <li><strong>RESTful API</strong>: Endpoints for user and tracker location data</li>
+  <li><strong>API Key Authentication</strong>: Secure access control</li>
+</ul>
+
+<h3 id="demo-features">Demo Features</h3>
+<ul>
+  <li><strong>Dual Location Sources</strong>: Separate user and tracker (dog) location streams</li>
+  <li><strong>Real-time Tracking</strong>: Start/stop tracking functionality with state management</li>
+  <li><strong>Distance Calculation</strong>: Haversine formula implementation for accurate distance measurement</li>
+  <li><strong>WebSocket Communication</strong>: Live updates between client and server</li>
+  <li><strong>Interactive Web Interface</strong>: Real-time map visualization with location markers</li>
+</ul>
+
+<h2 id="technical-implementation">Technical Implementation</h2>
+
+<h3 id="core-technologies">Core Technologies</h3>
+<ul>
+  <li><strong>Backend</strong>: Python, Flask, SocketIO</li>
+  <li><strong>Frontend</strong>: HTML5, CSS3, JavaScript, Leaflet.js</li>
+  <li><strong>GUI Framework</strong>: PyQt5 with WebEngine integration</li>
+  <li><strong>GPS Integration</strong>: gpsd daemon, real GPS hardware</li>
+  <li><strong>Networking</strong>: Requests library, cellular modem AT commands</li>
+  <li><strong>Data Processing</strong>: Real-time coordinate processing and distance calculations</li>
+</ul>
+
+<h3 id="advanced-features">Advanced Features</h3>
+<ul>
+  <li><strong>Haversine Distance Calculation</strong>: Precise distance measurement between GPS coordinates</li>
+  <li><strong>Signal Quality Analysis</strong>: RSSI/RSRQ parsing and visualization</li>
+  <li><strong>Multi-threaded Architecture</strong>: Separate threads for GPS updates, signal monitoring, and UI</li>
+  <li><strong>Error Recovery</strong>: Automatic reconnection and graceful failure handling</li>
+  <li><strong>Logging System</strong>: Comprehensive logging with rotating file handlers</li>
+</ul>
+
+<h3 id="communication-protocols">Communication Protocols</h3>
+<ul>
+  <li><strong>AT Commands</strong>: Direct cellular modem communication for signal monitoring</li>
+  <li><strong>Socket.IO</strong>: Real-time bidirectional event-based communication</li>
+  <li><strong>HTTP/REST</strong>: Location data transmission and API interactions</li>
+  <li><strong>WebSocket</strong>: Live map updates and tracking state synchronization</li>
+</ul>
+
+<h2 id="development-architecture">Development Architecture</h2>
+
+<h3 id="v2-evolution">V2 Evolution</h3>
+<p>Currently developing version 2 with enhanced hardware integration and expanded API functionality:</p>
+<ul>
+  <li>Custom tracking hardware development</li>
+  <li>Enhanced communication protocols (exploring LoRa integration)</li>
+  <li>Improved API architecture for scalability</li>
+  <li>Alternative deployment options (tablet-based solutions)</li>
+</ul>
+
+<h3 id="mock-api-benefits">Mock API Benefits</h3>
+<ul>
+  <li><strong>Development Acceleration</strong>: No physical GPS hardware required for testing</li>
+  <li><strong>Reproducible Testing</strong>: Consistent location data for feature development</li>
+  <li><strong>Demo Capabilities</strong>: Showcase functionality without field deployment</li>
+  <li><strong>API Design Validation</strong>: Test communication protocols and data structures</li>
+</ul>
+
+<hr />
+
+<p><em>This project demonstrates expertise in embedded systems development, real-time data processing, GPS/cellular integration, and full-stack application architecture. The combination of production-ready hardware integration and sophisticated development tooling showcases both practical implementation skills and thoughtful development methodology.</em></p>
+
+         </section>
+      </div>
+      <!-- FOOTER  -->
+      <div id="footer_wrap" class="outer">
+         <footer class="inner">
+            
+            <p class="copyright">Maintained by <a href="https://github.com/alxHawley">Alex Hawley</a></p>
+            
+            <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+         </footer>
+      </div>
+   </body>
+</html>

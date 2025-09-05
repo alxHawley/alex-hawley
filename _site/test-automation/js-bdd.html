@@ -4,7 +4,7 @@
       <meta charset='utf-8'>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width,maximum-scale=2">
-      <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=933695bea7045bc24dffc2816f402823251cb228">
+      <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9eeb085dff9683257505ed95c484b94ee58633b4">
    </head>
    <body>
       <nav class="navbar">
@@ -13,23 +13,157 @@
       <li class="navbar-item"><a href="/about/">About</a></li>
       <li class="navbar-item"><a href="/resume/">Resume</a></li>
       <li class="navbar-item"><a href="/test-automation/">Test Automation</a></li>
-      <li class="navbar-item"><a href="/other-stuff/">Other Stuff</a></li>
+      <li class="navbar-item"><a href="/projects/">Projects</a></li>
     </ul>
   </nav>
 
       <!-- HEADER -->
       <div id="header_wrap" class="outer">
          <header class="inner">
-            <h1 id="project_title">Alex Hawley, QA Engineer</h1>
-            <h2 id="project_tagline">Test Automation Portfolio</h2>
+            <h1 id="project_title">Alex Hawley</h1>
+            <h2 id="project_tagline">Quality Assurance Engineer</h2>
          </header>
       </div>
       <!-- MAIN CONTENT -->
       <div id="main_content_wrap" class="outer">
          <section id="main_content" class="inner">
-            <h1 id="javascript--bdd-testing">JavaScript &amp; BDD Testing</h1>
+            <h1 id="javascript-bdd-test-automation-with-cypress-and-cucumber">JavaScript BDD: Test Automation with Cypress and Cucumber</h1>
+<p><a href="https://github.com/alxHawley/js-cypress-cucumber">GitHub Repository</a></p>
 
-<p>Coming soon…</p>
+<p>This project demonstrates behavior-driven development (BDD) test automation using JavaScript, Cypress, and the Cucumber framework. Building on the foundation established in my Python BDD work, this implementation showcases cross-language automation proficiency and modern JavaScript testing practices.</p>
+
+<h2 id="project-overview">Project Overview</h2>
+
+<p>This JavaScript BDD framework replicates and extends the testing patterns from my <a href="https://github.com/alxHawley/python-behave">Python Behave project</a>, providing a comparative study of BDD implementation across different technology stacks. The project focuses on end-to-end web application testing with robust API testing capabilities.</p>
+
+<h2 id="technical-stack">Technical Stack</h2>
+
+<h3 id="core-technologies">Core Technologies</h3>
+<ul>
+  <li><strong>Cypress</strong>: Modern end-to-end testing framework with real browser automation</li>
+  <li><strong>Cucumber</strong>: BDD framework supporting Gherkin syntax for human-readable test scenarios</li>
+  <li><strong>JavaScript ES6+</strong>: Modern JavaScript features and async/await patterns</li>
+  <li><strong>Node.js</strong>: Runtime environment with npm package management</li>
+</ul>
+
+<h3 id="key-features">Key Features</h3>
+<ul>
+  <li><strong>Cross-browser Testing</strong>: Comprehensive browser compatibility validation</li>
+  <li><strong>API Integration</strong>: HTTP request testing and response validation</li>
+  <li><strong>DOM Interaction</strong>: Advanced element manipulation and assertion capabilities</li>
+  <li><strong>Real-time Debugging</strong>: Cypress Test Runner with time-travel debugging</li>
+</ul>
+
+<h2 id="bdd-framework-architecture">BDD Framework Architecture</h2>
+
+<p>The framework follows standard BDD patterns with Gherkin feature files paired to JavaScript step definitions, promoting collaboration between technical and non-technical stakeholders.</p>
+
+<h3 id="feature-definition">Feature Definition</h3>
+<p>Example from <code class="language-plaintext highlighter-rouge">cypress/integration/features/login.feature</code>:</p>
+
+<div class="language-gherkin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">Feature</span><span class="p">:</span> User Authentication
+  As a user of the application
+  I want to authenticate with valid credentials
+  So that I can access protected features
+
+  <span class="kn">Scenario</span><span class="p">:</span> Successful login with valid credentials
+    <span class="nf">Given </span>I am on the login page
+    <span class="nf">When </span>I enter valid username and password
+    <span class="nf">And </span>I click the login button
+    <span class="nf">Then </span>I should be redirected to the dashboard
+    <span class="nf">And </span>I should see a welcome message
+</code></pre></div></div>
+
+<h3 id="step-implementation">Step Implementation</h3>
+<p>Corresponding JavaScript step definitions in <code class="language-plaintext highlighter-rouge">cypress/support/step_definitions/</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Given</span><span class="p">,</span> <span class="nx">When</span><span class="p">,</span> <span class="nx">Then</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@badeball/cypress-cucumber-preprocessor</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">Given</span><span class="p">(</span><span class="dl">"</span><span class="s2">I am on the login page</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">cy</span><span class="p">.</span><span class="nx">visit</span><span class="p">(</span><span class="dl">"</span><span class="s2">/login</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="dl">"</span><span class="s2">include</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">/login</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">When</span><span class="p">(</span><span class="dl">"</span><span class="s2">I enter valid username and password</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="username"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="dl">"</span><span class="s2">testuser</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="password"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="dl">"</span><span class="s2">password123</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">When</span><span class="p">(</span><span class="dl">"</span><span class="s2">I click the login button</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="login-btn"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">Then</span><span class="p">(</span><span class="dl">"</span><span class="s2">I should be redirected to the dashboard</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="dl">"</span><span class="s2">include</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">/dashboard</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="dashboard"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">(</span><span class="dl">"</span><span class="s2">be.visible</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="cypress-integration-benefits">Cypress Integration Benefits</h2>
+
+<h3 id="advanced-testing-capabilities">Advanced Testing Capabilities</h3>
+<ul>
+  <li><strong>Time-travel Debugging</strong>: Visual command log with DOM snapshots</li>
+  <li><strong>Automatic Waiting</strong>: Intelligent retry logic eliminates flaky tests</li>
+  <li><strong>Network Stubbing</strong>: Request/response mocking for isolated testing</li>
+  <li><strong>Real Browser Environment</strong>: Native browser interaction without WebDriver</li>
+</ul>
+
+<h3 id="modern-javascript-features">Modern JavaScript Features</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Async/await pattern for complex workflows</span>
+<span class="kd">const</span> <span class="nx">performLogin</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">credentials</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="username"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="password"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="login-btn"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="c1">// Custom commands for reusable functionality</span>
+<span class="nx">Cypress</span><span class="p">.</span><span class="nx">Commands</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">login</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">cy</span><span class="p">.</span><span class="nx">session</span><span class="p">([</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">],</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">cy</span><span class="p">.</span><span class="nx">visit</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="username"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span>
+    <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="password"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">type</span><span class="p">(</span><span class="nx">password</span><span class="p">);</span>
+    <span class="nx">cy</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-cy="login-btn"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+    <span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="dl">'</span><span class="s1">include</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/dashboard</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="project-structure">Project Structure</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>js-cypress-cucumber/
+├── cypress/
+│   ├── integration/
+│   │   └── features/          # Gherkin feature files
+│   ├── support/
+│   │   ├── step_definitions/  # JavaScript step implementations
+│   │   ├── commands.js        # Custom Cypress commands
+│   │   └── index.js          # Global configuration
+│   ├── fixtures/             # Test data and mock responses
+│   └── plugins/              # Cypress plugins and preprocessors
+├── cypress.config.js         # Cypress configuration
+└── package.json             # Dependencies and scripts
+</code></pre></div></div>
+
+<h2 id="development-methodology">Development Methodology</h2>
+
+<p>This project demonstrates proficiency in:</p>
+<ul>
+  <li><strong>Cross-language automation expertise</strong> - Implementing identical test scenarios across Python and JavaScript</li>
+  <li><strong>Modern testing practices</strong> - Leveraging latest Cypress features and JavaScript ES6+ syntax</li>
+  <li><strong>Framework architecture</strong> - Designing maintainable, scalable test automation solutions</li>
+  <li><strong>BDD collaboration</strong> - Facilitating communication between technical and business stakeholders</li>
+</ul>
+
+<h2 id="future-enhancements">Future Enhancements</h2>
+
+<p><strong>API Testing Integration</strong>: Expanding the framework to include comprehensive API testing capabilities similar to the Python implementation, utilizing Cypress’s native HTTP request functionality.</p>
+
+<p><strong>Cross-browser CI/CD</strong>: Implementation of continuous integration with multiple browser configurations for comprehensive compatibility testing.</p>
+
+<hr />
+
+<p><em>This project showcases modern JavaScript test automation practices and demonstrates the versatility of BDD frameworks across different programming languages and testing tools.</em></p>
 
          </section>
       </div>

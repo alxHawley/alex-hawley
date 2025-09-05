@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <meta charset='utf-8'>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width,maximum-scale=2">
+      <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9eeb085dff9683257505ed95c484b94ee58633b4">
+   </head>
+   <body>
+      <nav class="navbar">
+    <ul class="navbar-list">
+      <li class="navbar-item"><a href="/">Home</a></li>
+      <li class="navbar-item"><a href="/about/">About</a></li>
+      <li class="navbar-item"><a href="/resume/">Resume</a></li>
+      <li class="navbar-item"><a href="/test-automation/">Test Automation</a></li>
+      <li class="navbar-item"><a href="/projects/">Projects</a></li>
+    </ul>
+  </nav>
+
+      <!-- HEADER -->
+      <div id="header_wrap" class="outer">
+         <header class="inner">
+            <h1 id="project_title">Alex Hawley</h1>
+            <h2 id="project_tagline">Quality Assurance Engineer</h2>
+         </header>
+      </div>
+      <!-- MAIN CONTENT -->
+      <div id="main_content_wrap" class="outer">
+         <section id="main_content" class="inner">
+            <h1 id="python-api--ui-testing-with-pytest">Python API &amp; UI Testing with Pytest</h1>
+<p><a href="https://github.com/alxHawley/python-pytest">GitHub Repository</a></p>
+
+<p>A comprehensive, fast pytest-based test suite covering both API testing for the <a href="https://restful-booker.herokuapp.com/apidoc/index.html">Restful Booker API</a> and UI testing for the <a href="https://www.saucedemo.com/">Sauce Demo</a> application. This project demonstrates a streamlined approach to full-stack testing without the overhead of BDD frameworks, achieving <strong>88% test coverage</strong>.</p>
+
+<h2 id="project-overview">Project Overview</h2>
+
+<p>This pytest-based testing suite provides a professional implementation of both API and UI testing fundamentals, showcasing modern Python testing practices. The project serves as a comprehensive example of efficient testing approaches, complementing the <a href="./python-bdd">BDD framework</a> with direct pytest implementation patterns for maximum speed and clarity.</p>
+
+<h2 id="technical-stack">Technical Stack</h2>
+
+<h3 id="core-technologies">Core Technologies</h3>
+<ul>
+  <li><strong>Pytest</strong>: Modern Python testing framework with fixture support and 88% coverage</li>
+  <li><strong>Requests</strong>: HTTP library for API interaction and validation</li>
+  <li><strong>Selenium</strong>: Web browser automation with webdriver-manager for automatic driver management</li>
+  <li><strong>JSON Schema</strong>: Response structure validation and data integrity testing</li>
+  <li><strong>Python 3.8+</strong>: Modern Python practices with type hints and comprehensive error handling</li>
+</ul>
+
+<h3 id="testing-features">Testing Features</h3>
+<ul>
+  <li><strong>Fast &amp; Lightweight</strong>: Pure pytest with no BDD overhead</li>
+  <li><strong>Comprehensive Coverage</strong>: Tests all major API endpoints and UI workflows</li>
+  <li><strong>Schema Validation</strong>: JSON schema validation using jsonschema</li>
+  <li><strong>Cross-browser Ready</strong>: Chrome with headless mode for CI/CD</li>
+  <li><strong>Environment Configurable</strong>: Easy switching between local Docker and production environments</li>
+</ul>
+
+<h2 id="testing-implementation">Testing Implementation</h2>
+
+<h3 id="api-testing---crud-operations">API Testing - CRUD Operations</h3>
+<p>Comprehensive API testing patterns demonstrating essential validation techniques:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">schemas.booking_schema</span> <span class="kn">import</span> <span class="n">booking_schema</span>
+<span class="kn">from</span> <span class="nn">src.api_client</span> <span class="kn">import</span> <span class="n">APIClient</span>
+
+<span class="k">class</span> <span class="nc">TestAPI</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">test_create_booking</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_client</span><span class="p">):</span>
+        <span class="s">"""Test creating a new booking record"""</span>
+        <span class="n">booking_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"firstname"</span><span class="p">:</span> <span class="s">"John"</span><span class="p">,</span>
+            <span class="s">"lastname"</span><span class="p">:</span> <span class="s">"Doe"</span><span class="p">,</span> 
+            <span class="s">"totalprice"</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+            <span class="s">"depositpaid"</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+            <span class="s">"bookingdates"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"checkin"</span><span class="p">:</span> <span class="s">"2024-01-01"</span><span class="p">,</span>
+                <span class="s">"checkout"</span><span class="p">:</span> <span class="s">"2024-01-07"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="n">response</span> <span class="o">=</span> <span class="n">api_client</span><span class="p">.</span><span class="n">create_booking</span><span class="p">(</span><span class="n">booking_data</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">response</span><span class="p">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="k">assert</span> <span class="s">"bookingid"</span> <span class="ow">in</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">test_get_booking</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_client</span><span class="p">,</span> <span class="n">booking_id</span><span class="p">):</span>
+        <span class="s">"""Test retrieving booking by ID with schema validation"""</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">api_client</span><span class="p">.</span><span class="n">get_booking</span><span class="p">(</span><span class="n">booking_id</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">response</span><span class="p">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        
+        <span class="n">booking</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="c1"># Validate against JSON schema
+</span>        <span class="n">api_client</span><span class="p">.</span><span class="n">validate_booking_schema</span><span class="p">(</span><span class="n">booking</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="ui-testing---selenium-automation">UI Testing - Selenium Automation</h3>
+<p>Modern Selenium implementation with reliable selectors and proper test isolation:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+
+<span class="k">class</span> <span class="nc">TestLogin</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">test_valid_login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">driver</span><span class="p">):</span>
+        <span class="s">"""Test successful login with standard user credentials"""</span>
+        <span class="n">driver</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"https://www.saucedemo.com/"</span><span class="p">)</span>
+        
+        <span class="c1"># Use data-test attributes for stable selectors
+</span>        <span class="n">driver</span><span class="p">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s">"[data-test='username']"</span><span class="p">).</span><span class="n">send_keys</span><span class="p">(</span><span class="s">"standard_user"</span><span class="p">)</span>
+        <span class="n">driver</span><span class="p">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s">"[data-test='password']"</span><span class="p">).</span><span class="n">send_keys</span><span class="p">(</span><span class="s">"secret_sauce"</span><span class="p">)</span>
+        <span class="n">driver</span><span class="p">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s">"[data-test='login-button']"</span><span class="p">).</span><span class="n">click</span><span class="p">()</span>
+        
+        <span class="c1"># Verify successful login
+</span>        <span class="k">assert</span> <span class="s">"inventory.html"</span> <span class="ow">in</span> <span class="n">driver</span><span class="p">.</span><span class="n">current_url</span>
+        <span class="k">assert</span> <span class="n">driver</span><span class="p">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="p">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s">"title"</span><span class="p">).</span><span class="n">text</span> <span class="o">==</span> <span class="s">"Products"</span>
+</code></pre></div></div>
+
+<h2 id="project-structure">Project Structure</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python-pytest/
+├── src/
+│   ├── __init__.py          # Package initialization
+│   └── api_client.py        # API client library
+├── tests/
+│   ├── test_api.py          # Main API test suite (10 tests)
+│   ├── test_api_client.py   # API client tests (6 tests)
+│   ├── test_ui.py           # UI/Selenium test suite (6 tests)
+│   └── conftest.py          # Pytest configuration and fixtures
+├── schemas/
+│   ├── booking_schema.json  # JSON schema for booking validation
+│   └── booking_id_schema.json
+├── requirements.txt          # Python dependencies
+├── pyproject.toml           # Project configuration
+└── README.md               # Comprehensive documentation
+</code></pre></div></div>
+
+<h2 id="test-coverage">Test Coverage</h2>
+
+<h3 id="api-testing-coverage-16-tests">API Testing Coverage (16 Tests)</h3>
+<ul>
+  <li><strong>Health Check</strong> (<code class="language-plaintext highlighter-rouge">/ping</code>) - API status verification</li>
+  <li><strong>Create Booking</strong> (<code class="language-plaintext highlighter-rouge">POST /booking</code>) - New booking creation with validation</li>
+  <li><strong>Get All Bookings</strong> (<code class="language-plaintext highlighter-rouge">GET /booking</code>) - List all booking IDs</li>
+  <li><strong>Get Specific Booking</strong> (<code class="language-plaintext highlighter-rouge">GET /booking/{id}</code>) - Retrieve booking details</li>
+  <li><strong>Filtered Search</strong> (<code class="language-plaintext highlighter-rouge">GET /booking?firstname=X&amp;lastname=Y</code>) - Parameter-based searching</li>
+  <li><strong>Update Booking</strong> (<code class="language-plaintext highlighter-rouge">PUT /booking/{id}</code>) - Full booking updates with authentication</li>
+  <li><strong>Partial Update</strong> (<code class="language-plaintext highlighter-rouge">PATCH /booking/{id}</code>) - Partial field updates</li>
+  <li><strong>Delete Booking</strong> (<code class="language-plaintext highlighter-rouge">DELETE /booking/{id}</code>) - Booking removal</li>
+  <li><strong>Authentication</strong> (<code class="language-plaintext highlighter-rouge">POST /auth</code>) - Token generation and validation</li>
+  <li><strong>Error Scenarios</strong> - Invalid IDs, authentication failures, edge cases</li>
+</ul>
+
+<h3 id="ui-testing-coverage-6-tests">UI Testing Coverage (6 Tests)</h3>
+<ul>
+  <li><strong>Valid Login</strong> - Successful authentication with standard credentials</li>
+  <li><strong>Invalid Login</strong> - Error handling for incorrect credentials</li>
+  <li><strong>Locked User</strong> - Handling of locked-out user accounts</li>
+  <li><strong>User Logout</strong> - Complete logout flow and session cleanup</li>
+  <li><strong>Performance Testing</strong> - Page load performance monitoring</li>
+  <li><strong>Inventory Display</strong> - Product page functionality and element verification</li>
+</ul>
+
+<h2 id="testing-approach">Testing Approach</h2>
+
+<p>This implementation demonstrates:</p>
+<ul>
+  <li><strong>Dual Testing Strategy</strong>: Comprehensive API and UI coverage in one suite</li>
+  <li><strong>Modern Selenium Practices</strong>: Webdriver-manager, stable selectors, proper waits</li>
+  <li><strong>Professional Test Organization</strong>: Class-based structure with function-scoped fixtures</li>
+  <li><strong>Schema Validation</strong>: Automated response structure verification</li>
+  <li><strong>Environment Flexibility</strong>: Docker/production switching with environment variables</li>
+  <li><strong>CI/CD Ready</strong>: Headless browser support and comprehensive reporting</li>
+</ul>
+
+<h2 id="performance--quality-metrics">Performance &amp; Quality Metrics</h2>
+
+<ul>
+  <li><strong>Test Execution Time</strong>: ~58 seconds for full suite (22 tests)</li>
+  <li><strong>Coverage</strong>: 88% code coverage with detailed HTML reports</li>
+  <li><strong>Success Rate</strong>: 21 passed, 1 expected failure (performance test)</li>
+  <li><strong>Browser Compatibility</strong>: Chrome (headless for CI), extensible to other browsers</li>
+  <li><strong>API Response Time</strong>: Built-in timeout handling and performance monitoring</li>
+</ul>
+
+<h2 id="comparison-with-bdd-approach">Comparison with BDD Approach</h2>
+
+<p><strong>Pytest Benefits:</strong></p>
+<ul>
+  <li><strong>Speed</strong>: Significantly faster test development and execution</li>
+  <li><strong>Directness</strong>: No step definition overhead or abstraction layers</li>
+  <li><strong>Advanced Features</strong>: Excellent fixtures, parametrization, and parallel execution</li>
+  <li><strong>Professional Reporting</strong>: Comprehensive test results with coverage metrics</li>
+  <li><strong>Flexibility</strong>: Easy integration with CI/CD and multiple test types</li>
+</ul>
+
+<p><strong>BDD Benefits:</strong></p>
+<ul>
+  <li><strong>Stakeholder Communication</strong>: Human-readable scenarios for business collaboration</li>
+  <li><strong>Documentation</strong>: Living documentation of business requirements</li>
+  <li><strong>Reusability</strong>: Step definitions can be shared across multiple scenarios</li>
+  <li><strong>Cross-functional</strong>: Better communication between technical and non-technical teams</li>
+</ul>
+
+<h2 id="quick-start">Quick Start</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Clone and setup</span>
+git clone https://github.com/alxHawley/python-pytest
+<span class="nb">cd </span>python-pytest
+python <span class="nt">-m</span> venv venv
+<span class="nb">source </span>venv/bin/activate  <span class="c"># or .\venv\Scripts\Activate.ps1 on Windows</span>
+pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+
+<span class="c"># Run all tests</span>
+python <span class="nt">-m</span> pytest tests/ <span class="nt">-v</span>
+
+<span class="c"># Run with coverage</span>
+python <span class="nt">-m</span> pytest tests/ <span class="nt">--cov</span><span class="o">=</span>tests <span class="nt">--cov-report</span><span class="o">=</span>html
+</code></pre></div></div>
+
+<hr />
+
+<p><em>This project provides a comprehensive, production-ready testing approach that balances speed, maintainability, and thorough coverage across both API and UI testing domains.</em></p>
+
+         </section>
+      </div>
+      <!-- FOOTER  -->
+      <div id="footer_wrap" class="outer">
+         <footer class="inner">
+            
+            <p class="copyright">Maintained by <a href="https://github.com/alxHawley">Alex Hawley</a></p>
+            
+            <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+         </footer>
+      </div>
+   </body>
+</html>

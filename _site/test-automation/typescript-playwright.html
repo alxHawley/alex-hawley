@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <meta charset='utf-8'>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width,maximum-scale=2">
+      <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=9eeb085dff9683257505ed95c484b94ee58633b4">
+   </head>
+   <body>
+      <nav class="navbar">
+    <ul class="navbar-list">
+      <li class="navbar-item"><a href="/">Home</a></li>
+      <li class="navbar-item"><a href="/about/">About</a></li>
+      <li class="navbar-item"><a href="/resume/">Resume</a></li>
+      <li class="navbar-item"><a href="/test-automation/">Test Automation</a></li>
+      <li class="navbar-item"><a href="/projects/">Projects</a></li>
+    </ul>
+  </nav>
+
+      <!-- HEADER -->
+      <div id="header_wrap" class="outer">
+         <header class="inner">
+            <h1 id="project_title">Alex Hawley</h1>
+            <h2 id="project_tagline">Quality Assurance Engineer</h2>
+         </header>
+      </div>
+      <!-- MAIN CONTENT -->
+      <div id="main_content_wrap" class="outer">
+         <section id="main_content" class="inner">
+            <h1 id="typescript-test-automation-with-playwright-framework">TypeScript Test Automation with Playwright Framework</h1>
+<p><a href="https://github.com/alxHawley/typescript-playwright">GitHub Repository</a></p>
+
+<p>This project demonstrates modern test automation using TypeScript and Playwright, combining end-to-end browser testing with comprehensive API validation. Built with enterprise-grade practices, this framework showcases advanced testing capabilities including parallel execution, cross-browser compatibility, and CI/CD integration with GitHub Actions.</p>
+
+<h2 id="project-overview">Project Overview</h2>
+
+<p>This TypeScript-based automation framework provides a robust testing solution for both web applications and APIs, implementing modern testing patterns with type safety and comprehensive validation. The project demonstrates scalable architecture suitable for complex testing scenarios and continuous integration pipelines.</p>
+
+<h2 id="technical-stack">Technical Stack</h2>
+
+<h3 id="core-technologies">Core Technologies</h3>
+<ul>
+  <li><strong>Playwright</strong>: Modern browser automation framework with multi-browser support</li>
+  <li><strong>TypeScript</strong>: Strongly typed JavaScript for enhanced code quality and maintainability</li>
+  <li><strong>GitHub Actions</strong>: Automated CI/CD pipeline with containerized testing environment</li>
+  <li><strong>Docker Integration</strong>: Containerized API testing with restful-booker service</li>
+</ul>
+
+<h3 id="key-features">Key Features</h3>
+<ul>
+  <li><strong>Cross-browser Testing</strong>: Chrome, Firefox, Safari, and Edge compatibility testing</li>
+  <li><strong>Parallel Test Execution</strong>: Concurrent test running for optimal performance</li>
+  <li><strong>API &amp; E2E Integration</strong>: Comprehensive testing coverage across all application layers</li>
+  <li><strong>Type Safety</strong>: Full TypeScript implementation with schema validation</li>
+  <li><strong>CI/CD Ready</strong>: GitHub Actions workflow with automated test reporting</li>
+</ul>
+
+<h2 id="framework-architecture">Framework Architecture</h2>
+
+<p>The framework separates concerns with dedicated directories for API testing, E2E testing, and shared utilities, enabling maintainable and scalable test development.</p>
+
+<h3 id="end-to-end-testing">End-to-End Testing</h3>
+<p>Example from <code class="language-plaintext highlighter-rouge">src/tests/e2e/auth.spec.ts</code> demonstrating user authentication flows:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">test</span><span class="p">,</span> <span class="nx">expect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@playwright/test</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">users</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../utils/sauce.users</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">.</span><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">Authentication Tests</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">successful login with valid credentials</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">goto</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="c1">// Login with standard user credentials</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-test="username"]</span><span class="dl">'</span><span class="p">,</span> <span class="nx">users</span><span class="p">.</span><span class="nx">standard</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-test="password"]</span><span class="dl">'</span><span class="p">,</span> <span class="nx">users</span><span class="p">.</span><span class="nx">standard</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-test="login-button"]</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="c1">// Verify successful login</span>
+    <span class="k">await</span> <span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="dl">'</span><span class="s1">/inventory.html</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="dl">'</span><span class="s1">.title</span><span class="dl">'</span><span class="p">)).</span><span class="nx">toHaveText</span><span class="p">(</span><span class="dl">'</span><span class="s1">Products</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">login failure with invalid credentials</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">goto</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="c1">// Attempt login with invalid credentials</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-test="username"]</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">invalid_user</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-test="password"]</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">invalid_password</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-test="login-button"]</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="c1">// Verify error message</span>
+    <span class="k">await</span> <span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-test="error"]</span><span class="dl">'</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">toHaveText</span><span class="p">(</span><span class="dl">'</span><span class="s1">Epic sadface: Username and password do not match any user in this service</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="api-testing-implementation">API Testing Implementation</h3>
+<p>Comprehensive API testing from <code class="language-plaintext highlighter-rouge">src/tests/api/restfulbooker.spec.ts</code>:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">test</span><span class="p">,</span> <span class="nx">expect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@playwright/test</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">apiConfig</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../utils/api.config</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">bookingSchema</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../utils/schemas/booking.schema</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">.</span><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">RESTful Booker API Tests</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="na">bookingId</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="na">authToken</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+  <span class="nx">test</span><span class="p">.</span><span class="nx">beforeAll</span><span class="p">(</span><span class="k">async</span> <span class="p">({</span> <span class="nx">request</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Authenticate and get token</span>
+    <span class="kd">const</span> <span class="nx">authResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">apiConfig</span><span class="p">.</span><span class="nx">baseURL</span><span class="p">}</span><span class="s2">/auth`</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">username</span><span class="p">:</span> <span class="nx">apiConfig</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span>
+        <span class="na">password</span><span class="p">:</span> <span class="nx">apiConfig</span><span class="p">.</span><span class="nx">credentials</span><span class="p">.</span><span class="nx">password</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="kd">const</span> <span class="nx">authData</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">authResponse</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="nx">authToken</span> <span class="o">=</span> <span class="nx">authData</span><span class="p">.</span><span class="nx">token</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">create new booking</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">({</span> <span class="nx">request</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">bookingData</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">firstname</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">lastname</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Doe</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">totalprice</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+      <span class="na">depositpaid</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">bookingdates</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">checkin</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2024-01-01</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">checkout</span><span class="p">:</span> <span class="dl">'</span><span class="s1">2024-01-07</span><span class="dl">'</span>
+      <span class="p">},</span>
+      <span class="na">additionalneeds</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Breakfast</span><span class="dl">'</span>
+    <span class="p">};</span>
+
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">apiConfig</span><span class="p">.</span><span class="nx">baseURL</span><span class="p">}</span><span class="s2">/booking`</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">data</span><span class="p">:</span> <span class="nx">bookingData</span>
+    <span class="p">});</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">responseBody</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    
+    <span class="c1">// Validate response structure</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">responseBody</span><span class="p">).</span><span class="nx">toHaveProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">bookingid</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">responseBody</span><span class="p">.</span><span class="nx">booking</span><span class="p">).</span><span class="nx">toMatchObject</span><span class="p">(</span><span class="nx">bookingData</span><span class="p">);</span>
+    
+    <span class="nx">bookingId</span> <span class="o">=</span> <span class="nx">responseBody</span><span class="p">.</span><span class="nx">bookingid</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">retrieve booking by ID</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">({</span> <span class="nx">request</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">request</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">apiConfig</span><span class="p">.</span><span class="nx">baseURL</span><span class="p">}</span><span class="s2">/booking/</span><span class="p">${</span><span class="nx">bookingId</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">booking</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    
+    <span class="c1">// Schema validation</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">booking</span><span class="p">).</span><span class="nx">toMatchSchema</span><span class="p">(</span><span class="nx">bookingSchema</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">booking</span><span class="p">.</span><span class="nx">firstname</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">booking</span><span class="p">.</span><span class="nx">lastname</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="dl">'</span><span class="s1">Doe</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="advanced-testing-capabilities">Advanced Testing Capabilities</h2>
+
+<h3 id="typescript-configuration">TypeScript Configuration</h3>
+<p>Comprehensive type safety with <code class="language-plaintext highlighter-rouge">tsconfig.json</code> and schema validation:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// utils/schemas/booking.schema.ts</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">bookingSchema</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">required</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">firstname</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">lastname</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">totalprice</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">depositpaid</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bookingdates</span><span class="dl">'</span><span class="p">],</span>
+  <span class="na">properties</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">firstname</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="na">lastname</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="na">totalprice</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="na">depositpaid</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">boolean</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="na">bookingdates</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">required</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">checkin</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">checkout</span><span class="dl">'</span><span class="p">],</span>
+      <span class="na">properties</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">checkin</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span> <span class="na">format</span><span class="p">:</span> <span class="dl">'</span><span class="s1">date</span><span class="dl">'</span> <span class="p">},</span>
+        <span class="na">checkout</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span> <span class="na">format</span><span class="p">:</span> <span class="dl">'</span><span class="s1">date</span><span class="dl">'</span> <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="configuration-management">Configuration Management</h3>
+<p>Centralized configuration with environment-specific settings:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// utils/api.config.ts</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">apiConfig</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">baseURL</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">API_BASE_URL</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">http://localhost:3001</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">credentials</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">username</span><span class="p">:</span> <span class="dl">'</span><span class="s1">admin</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">password</span><span class="p">:</span> <span class="dl">'</span><span class="s1">password123</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">timeout</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+  <span class="na">retries</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="project-structure">Project Structure</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typescript-playwright/
+├── .github/workflows/
+│   └── playwright.yml           # GitHub Actions CI/CD pipeline
+├── src/
+│   ├── tests/
+│   │   ├── api/
+│   │   │   └── restfulbooker.spec.ts  # API test suite
+│   │   └── e2e/
+│   │       ├── auth.spec.ts           # Authentication tests
+│   │       └── purchase.spec.ts       # E2E purchase flow
+│   └── utils/
+│       ├── api.config.ts              # API configuration
+│       ├── sauce.users.ts             # Test user data
+│       └── schemas/
+│           └── booking.schema.ts      # Response schema validation
+├── playwright.config.ts               # Playwright configuration
+├── tsconfig.json                     # TypeScript configuration
+└── package.json                      # Dependencies and scripts
+</code></pre></div></div>
+
+<h2 id="cicd-integration">CI/CD Integration</h2>
+
+<h3 id="github-actions-workflow">GitHub Actions Workflow</h3>
+<p>Automated testing with containerized environment from <code class="language-plaintext highlighter-rouge">.github/workflows/playwright.yml</code>:</p>
+
+<ul>
+  <li><strong>Docker Integration</strong>: RESTful Booker API container for consistent testing</li>
+  <li><strong>Multi-browser Execution</strong>: Parallel testing across Chrome, Firefox, and Safari</li>
+  <li><strong>Test Reporting</strong>: Automated test results and artifact generation</li>
+  <li><strong>Environment Flexibility</strong>: Configurable API endpoints for different environments</li>
+</ul>
+
+<h3 id="local-development-options">Local Development Options</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Option 1: Local Docker container</span>
+docker run <span class="nt">-p</span> 3001:3001 mwinteringham/restfulbooker
+
+<span class="c"># Option 2: Remote API endpoint</span>
+<span class="c"># Update api.config.ts baseURL to 'https://restful-booker.herokuapp.com/'</span>
+</code></pre></div></div>
+
+<h2 id="development-methodology">Development Methodology</h2>
+
+<p>This project demonstrates expertise in:</p>
+<ul>
+  <li><strong>Modern TypeScript practices</strong> - Strong typing, interfaces, and advanced language features</li>
+  <li><strong>Enterprise testing patterns</strong> - Scalable architecture with separation of concerns</li>
+  <li><strong>Cross-platform automation</strong> - Multi-browser and multi-environment compatibility</li>
+  <li><strong>API testing proficiency</strong> - RESTful service validation with schema verification</li>
+  <li><strong>DevOps integration</strong> - CI/CD pipeline implementation with containerized testing</li>
+</ul>
+
+<h2 id="testing-coverage">Testing Coverage</h2>
+
+<h3 id="e2e-test-scenarios">E2E Test Scenarios</h3>
+<ul>
+  <li><strong>User Authentication</strong>: Login/logout flows with validation</li>
+  <li><strong>E-commerce Workflows</strong>: Complete purchase journey testing</li>
+  <li><strong>UI Interaction</strong>: Form validation and user experience testing</li>
+  <li><strong>Cross-browser Compatibility</strong>: Consistent behavior validation</li>
+</ul>
+
+<h3 id="api-test-scenarios">API Test Scenarios</h3>
+<ul>
+  <li><strong>CRUD Operations</strong>: Complete booking lifecycle management</li>
+  <li><strong>Authentication</strong>: Token-based security testing</li>
+  <li><strong>Data Validation</strong>: Schema verification and boundary testing</li>
+  <li><strong>Error Handling</strong>: Comprehensive negative testing scenarios</li>
+</ul>
+
+<h2 id="performance--reliability-features">Performance &amp; Reliability Features</h2>
+
+<ul>
+  <li><strong>Parallel Execution</strong>: Concurrent test running for faster feedback</li>
+  <li><strong>Auto-retry Logic</strong>: Configurable retry mechanisms for flaky tests</li>
+  <li><strong>Screenshot Capture</strong>: Automatic failure documentation</li>
+  <li><strong>Test Isolation</strong>: Independent test execution preventing cross-test dependencies</li>
+</ul>
+
+<h2 id="future-enhancements">Future Enhancements</h2>
+
+<p><strong>Visual Regression Testing</strong>: Integration of Playwright’s visual comparison capabilities for UI consistency validation across releases.</p>
+
+<p><strong>Performance Monitoring</strong>: Implementation of web vitals and performance metrics collection during E2E test execution.</p>
+
+<hr />
+
+<p><em>This project showcases modern TypeScript-based test automation practices, demonstrating proficiency in contemporary testing frameworks and enterprise-grade CI/CD integration.</em></p>
+
+         </section>
+      </div>
+      <!-- FOOTER  -->
+      <div id="footer_wrap" class="outer">
+         <footer class="inner">
+            
+            <p class="copyright">Maintained by <a href="https://github.com/alxHawley">Alex Hawley</a></p>
+            
+            <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+         </footer>
+      </div>
+   </body>
+</html>
